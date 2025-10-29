@@ -139,10 +139,12 @@
     <h2>Find your Fit!</h2>
     <div class="arrow"></div>
 
-    <form action="https://script.google.com/macros/s/AKfycbwvzHkJe_-8NG1smFBB9J7b8MpG60pFmnV-FBdByYzbHPHmJjtFNeV3WuT9WFfpURkHxA/exec" method="POST">
+    <!-- ✅ Form connected to your Apps Script -->
+    <form action="https://script.google.com/macros/s/AKfycbwvzHkJe_-8NG1smFBB9J7b8MpG60pFmnV-FBdByYzbHPHmJjtFNeV3WuT9WFfpURkHxA/exec" method="POST" target="hidden_iframe">
       <input type="email" name="email" placeholder="Enter your email" required>
       <button type="submit">Be the first to try</button>
     </form>
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
     <p id="thanks">🎉 Thanks for joining! We’ll keep you posted.</p>
   </div>
 
@@ -157,10 +159,9 @@
 
   <script>
     const form = document.querySelector("form");
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
+    form.addEventListener("submit", () => {
       document.getElementById("thanks").style.display = "block";
-      form.reset();
+      setTimeout(() => form.reset(), 300);
     });
   </script>
 
